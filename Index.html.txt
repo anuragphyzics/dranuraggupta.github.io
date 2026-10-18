@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Anurag Gupta | Assistant Professor of Physics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --text-dark: #1f2937;
+            --text-muted: #4b5563;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --accent: #0284c7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Layout Structure */
+        .header-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        .avatar-container {
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            object-fit: cover;
+            background-color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #475569;
+        }
+
+        .hero-details h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-details .subtitle {
+            font-size: 1.1rem;
+            color: #93c5fd;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-details .institution {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin-bottom: 1.25rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: background 0.2s;
+        }
+
+        .btn-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-inner {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav-item {
+            padding: 1rem 1.25rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Main Content Grid */
+        .main-content {
+            padding: 2.5rem 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 850px) {
+            .main-content {
+                grid-template-columns: 2.8fr 1.2fr;
+            }
+        }
+
+        /* Cards & Sections */
+        .section-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .badge {
+            background: #eff6ff;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+        }
+
+        /* Publication & Experience Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.25rem;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-light);
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .item-sub {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0.15rem 0;
+        }
+
+        .item-meta {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* Sidebar Styling */
+        .sidebar .section-block {
+            padding: 1.25rem;
+        }
+
+        .contact-list {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .contact-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .contact-list i {
+            color: var(--primary-light);
+            margin-top: 0.25rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero Section -->
+    <header class="header-bg">
+        <div class="container hero">
+            <div class="avatar-container">
+                <!-- Replace src with your profile image path or URL -->
+                <div class="avatar">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+            </div>
+            <div class="hero-details">
+                <h1>Dr. Anurag Gupta</h1>
+                <div class="subtitle">Assistant Professor of Physics & Purchase Officer</div>
+                <div class="institution">
+                    Department of Science, Technology and Technical Education<br>
+                    Government Engineering College, Buxar, Bihar, India
+                </div>
+                <div class="social-links">
+                    <a href="mailto:anuragphyzics@gmail.com" class="btn-link"><i class="fa-solid fa-envelope"></i> Email</a>
+                    <a href="https://scholar.google.com" target="_blank" class="btn-link"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+                    <a href="https://linkedin.com" target="_blank" class="btn-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://www.gecbuxar.ac.in/faculty/dr-anurag-gupta/" target="_blank" class="btn-link"><i class="fa-solid fa-building-columns"></i> Institutional Profile</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="container nav-inner">
+            <a href="#about" class="nav-item active">About</a>
+            <a href="#research" class="nav-item">Research Interests</a>
+            <a href="#publications" class="nav-item">Publications</a>
+            <a href="#teaching" class="nav-item">Teaching & Responsibilities</a>
+            <a href="#education" class="nav-item">Education</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container main-content">
+        
+        <!-- Left Main Column -->
+        <main>
+            <!-- About Section -->
+            <section id="about" class="section-block">
+                <h2 class="section-title"><i class="fa-solid fa-user"></i> Biography</h2>
+                <p>Dr. Anurag Gupta is currently serving as an <strong>Assistant Professor of Physics</strong> in the Department of Applied Science & Humanities at <strong>Government Engineering College, Buxar</strong> (under the Department of Science, Technology and Technical Education, Govt. of Bihar). He also holds institutional administrative responsibilities as the college <strong>Purchase Officer</strong>.</p>
+                <br>
+                <p>His academic background spans top tier Indian institutions including Banaras Hindu University (BHU) and the University of Allahabad. Prior to joining the Bihar Engineering Education Service, he served as a Central Government officer at IIT Patna.</p>
+            </section>
+
+            <!-- Research Interests -->
+            <section id="research" class="section-block">
+                <h2 class="section-title"><i class="fa-solid fa-microscope"></i> Research & Specialization</h2>
+                <p>His core research focuses on experimental material characterization, thin-film devices, and micro-electromechanical sensor technologies:</p>
+                <div class="badge-list">
+                    <span class="badge">Gas Sensors (MEMS & MOS)</span>
+                    <span class="badge">Electronic Nose Systems</span>
+                    <span class="badge">Memristor Devices</span>
+                    <span class="badge">Transmission Electron Microscopy (TEM)</span>
+                    <span class="badge">Field Emission SEM (FESEM)</span>
+                    <span class="badge">Perovskite Materials</span>
+                    <span class="badge">Microcantilever VOC Sensors</span>
+                </div>
+            </section>
+
+            <!-- Publications -->
+            <section id="publications" class="section-block">
+                <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Selected Publications</h2>
+                
+                <div class="timeline-item">
+                    <div class="item-title">Microcantilever-Based VOC Sensors & Resonant Oscillator Topologies</div>
+                    <div class="item-sub">Journal of Micro-Electro-Mechanical Systems / Applied Physics Letters</div>
+                    <div class="item-meta">Peer-reviewed Research Article • DOI / Link available on Scholar</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-title">Phase Reconstruction & Transport of Intensity Equations in HRTEM</div>
+                    <div class="item-sub">Materials Characterization & Experimental Physics</div>
+                    <div class="item-meta">Peer-reviewed Research Article</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-title">Pulsed Laser Deposited Thin Films for Gas Sensing Applications</div>
+                    <div class="item-sub">International Conference Proceedings</div>
+                    <div class="item-meta">Awarded Best Poster Award</div>
+                </div>
+            </section>
+
+            <!-- Teaching & Experience -->
+            <section id="teaching" class="section-block">
+                <h2 class="section-title"><i class="fa-solid fa-chalkboard-user"></i> Teaching & Courses</h2>
+                
+                <div class="timeline-item">
+                    <div class="item-title">Engineering Physics (Theory & Lab)</div>
+                    <div class="item-sub">B.Tech 1st & 2nd Semester Students</div>
+                    <div class="item-meta">Paper Codes: 102101, 102101P, 100201, 100104P</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-title">Electromagnetism & Wave Optics</div>
+                    <div class="item-sub">Undergraduate Engineering Physics Curriculum</div>
+                    <div class="item-meta">Lecture Series & Laboratory Modules</div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section id="education" class="section-block">
+                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+                
+                <div class="timeline-item">
+                    <div class="item-title">Ph.D. in Physics / Materials Science</div>
+                    <div class="item-sub">Banaras Hindu University (BHU), Varanasi</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-title">Master of Science (M.Sc.) & M.Tech</div>
+                    <div class="item-sub">Banaras Hindu University (BHU), Varanasi</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-title">Bachelor of Science (B.Sc.)</div>
+                    <div class="item-sub">University of Allahabad</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar">
+            <!-- Contact Card -->
+            <div class="section-block">
+                <h3 class="section-title" style="font-size: 1.1rem;"><i class="fa-solid fa-address-card"></i> Contact Information</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Department of Applied Science & Humanities, GEC Buxar, Mahdah, Itarhi Road, Buxar, Bihar – 802103</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>anuragphyzics@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-building"></i>
+                        <span>Government Engineering College, Buxar</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Roles Card -->
+            <div class="section-block">
+                <h3 class="section-title" style="font-size: 1.1rem;"><i class="fa-solid fa-user-gear"></i> Administrative Roles</h3>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-check-double"></i> <span>Purchase Officer, GEC Buxar</span></li>
+                    <li><i class="fa-solid fa-check-double"></i> <span>Physics Lab In-Charge</span></li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Dr. Anurag Gupta. All rights reserved. | Hosted on GitHub Pages</p>
+        </div>
+    </footer>
+
+</body>
+</html>
